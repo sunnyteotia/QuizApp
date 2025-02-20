@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ Middleware to Enable CORS
 app.use(cors({
-    origin: "http://localhost:4000",  // Replace with your frontend URL
+    origin: "https://quizz-app-frontend-nine.vercel.app",  // Replace with your frontend URL
     credentials: true
 }));
 
