@@ -14,11 +14,36 @@ connectToDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ✅ Middleware to Enable CORS
+// const getBaseURL = () => {
+//     const hostname = process.env.HOSTNAME || 'localhost';
+
+//     if (hostname.includes('localhost')) {
+//         return 'http://localhost:4000'; // Local development origin
+//     } else {
+//         return 'https://quizz-app-frontend-nine.vercel.app'; // Production origin
+//     }
+// };
+
+// app.use(cookieParser());
+// app.use(cors({
+//     origin: `${getBaseURL()}`, // Your frontend URL
+//     credentials: true // Allow credentials (cookies)
+//   }));
 app.use(cors({
-    origin: "https://quizz-app-frontend-nine.vercel.app",  // Replace with your frontend URL
-    credentials: true
+    origin: [
+        "http://localhost:4000",  // Local development frontend
+        "https://quizz-app-frontend-nine.vercel.app" // Deployed frontend on Vercel
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true // Allow cookies and authentication headers
 }));
+
+// ✅ Middleware to Enable CORS
+// app.use(cors({
+//     origin: "https://quizz-app-frontend-nine.vercel.app",  // Replace with your frontend URL
+//     // origin:"htttp://localhost:4000",
+//     credentials: true
+// }));
 
 // ✅ Middleware to Parse JSON Requests
 app.use(express.json());
