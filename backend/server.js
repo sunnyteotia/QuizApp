@@ -22,7 +22,9 @@ app.use(cors({
 
 // ✅ Middleware to Parse JSON Requests
 app.use(express.json());
-
+app.get('/',(req,res)=>{
+    res.send('Hello World');
+})
 // ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/home", homeRoutes);
